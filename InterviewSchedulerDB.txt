@@ -1,0 +1,37 @@
+create database InterviewSchedulerDB
+
+create table Job(
+ID int identity(1,1) primary key ,
+JobID as'KA-'+CAST ( id as varchar (16) ) not null,
+JobRole varchar(20) not null,
+Available int(10) not null
+)
+
+create table InterviewLevel(
+ID int identity(1,1) primary key ,
+Level varchar(10) not null,
+LevelDes varchar(20) not null
+)
+
+create table Users(
+ID int identity(1,1) primary key ,
+Username varchar(30) not null,
+password varchar(30) not null,
+Rolename varchar(30) not null
+)
+
+create table Candidate(
+ID int identity(1,1) primary key ,
+Name varchar(30) not null,
+DOB date not null,
+Address varchar(50) not null,
+Mobileno varchar(12) not null,
+Qualification varchar(15) not null,
+Email varchar(30) not null,
+Level_Id int not null CONSTRAINT CLFK FOREIGN KEY (Level_Id) 
+REFERENCES InterviewLevel (ID),
+Job_Id int not null CONSTRAINT CJFK FOREIGN KEY (Job_Id) 
+REFERENCES Job (ID),
+Resume string 
+
+)
