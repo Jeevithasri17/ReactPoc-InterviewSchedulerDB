@@ -2,9 +2,9 @@ create database InterviewSchedulerDB
 
 create table Job(
 ID int identity(1,1) primary key ,
-JobID as'KA-'+CAST ( id as varchar (16) ) not null,
+JobID as'KA-'+CAST ( id as varchar (16) ),
 JobRole varchar(20) not null,
-Available int(10) not null
+Available int not null
 )
 
 create table InterviewLevel(
@@ -32,6 +32,6 @@ Level_Id int not null CONSTRAINT CLFK FOREIGN KEY (Level_Id)
 REFERENCES InterviewLevel (ID),
 Job_Id int not null CONSTRAINT CJFK FOREIGN KEY (Job_Id) 
 REFERENCES Job (ID),
-Resume string 
+Resume varchar(50) 
 
 )
