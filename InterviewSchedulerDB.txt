@@ -35,3 +35,17 @@ REFERENCES Job (ID),
 Resume varchar(50) 
 
 )
+
+create table Panel(
+ID int identity(1,1) primary key ,
+Name varchar(30) not null,
+Email varchar(30) not null,
+Mobileno varchar(12) not null,
+LevelID int not null CONSTRAINT PLFK FOREIGN KEY (LevelID) 
+REFERENCES InterviewLevel (ID),
+JobID int not null CONSTRAINT PJFK FOREIGN KEY (JobID) 
+REFERENCES Job (ID)
+
+)
+
+select * from Panel
