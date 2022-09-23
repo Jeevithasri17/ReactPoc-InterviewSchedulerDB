@@ -49,3 +49,19 @@ REFERENCES Job (ID)
 )
 
 select * from Panel
+
+
+alter table Candidate 
+alter column DOB varchar(20)
+
+create table CandidateAvailability(
+ID int identity(1,1) primary key ,
+CandidateID int not null CONSTRAINT CFK FOREIGN KEY (CandidateID) 
+REFERENCES Candidate(ID), 
+AvailableDate varchar(20) not null,
+AvailableTimeFrom time not null,
+AvailableTimeTo time not null,
+
+)
+
+select * from CandidateAvailability
