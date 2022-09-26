@@ -77,3 +77,21 @@ AvailableTimeTo time not null,
 )
 
 select * from PanelAvailability
+
+
+create table Schedule(
+ID int identity(1,1) primary key ,
+Candidate_id int not null CONSTRAINT CFK1 FOREIGN KEY (Candidate_id) 
+REFERENCES Candidate(ID), 
+Panel_id int not null CONSTRAINT PFK1 FOREIGN KEY (Panel_id) 
+REFERENCES Panel (ID), 
+LevelID int not null CONSTRAINT SLFK FOREIGN KEY (LevelID) 
+REFERENCES InterviewLevel (ID),
+JobID int not null CONSTRAINT SJFK FOREIGN KEY (JobID) 
+REFERENCES Job (ID),
+Date varchar(20) not null,
+TimeFrom time not null,
+TimeTo time not null
+)
+
+select * from Schedule
