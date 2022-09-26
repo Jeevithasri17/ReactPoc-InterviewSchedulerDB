@@ -65,3 +65,15 @@ AvailableTimeTo time not null,
 )
 
 select * from CandidateAvailability
+
+create table PanelAvailability(
+ID int identity(1,1) primary key ,
+PanelID int not null CONSTRAINT PFK FOREIGN KEY (PanelID) 
+REFERENCES Panel(ID), 
+AvailableDate varchar(20) not null,
+AvailableTimeFrom time not null,
+AvailableTimeTo time not null,
+
+)
+
+select * from PanelAvailability
